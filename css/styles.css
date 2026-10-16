@@ -1471,6 +1471,83 @@ a.contact-item__text:focus-visible {
 }
 
 /* ═══════════════════════════════════════════════════════
+   TOQUE FINO DE TARJETAS
+   - línea lima que se dibuja arriba al pasar el mouse
+   - halo que sigue al cursor (solo mouse, no táctil)
+   - el ícono del stack se invierte a lima
+═══════════════════════════════════════════════════════ */
+
+.stack-card {
+  overflow: hidden;
+}
+
+.stack-card::after,
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 560ms var(--ease-spring);
+  pointer-events: none;
+}
+
+.stack-card:hover::after,
+.stack-card:focus-within::after,
+.project-card:hover::after,
+.project-card:focus-within::after {
+  transform: scaleX(1);
+}
+
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(210, 255, 58, 0.1),
+      transparent 62%);
+  opacity: 0;
+  transition: opacity 320ms var(--ease-out);
+  pointer-events: none;
+}
+
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+
+.stack-card__icon {
+  transition: background 320ms var(--ease-out), color 320ms var(--ease-out),
+    transform 320ms var(--ease-spring);
+}
+
+.stack-card:hover .stack-card__icon {
+  background: var(--signal);
+  color: var(--ink);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.stack-card:hover {
+  border-color: rgba(210, 255, 58, 0.35);
+}
+
+.project-card:hover {
+  border-color: rgba(210, 255, 58, 0.28);
+}
+
+.stack-card:hover .stack-list__item::before {
+  box-shadow: 0 0 0 4px rgba(210, 255, 58, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════
    REVEAL
 ═══════════════════════════════════════════════════════ */
 

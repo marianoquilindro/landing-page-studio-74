@@ -104,6 +104,17 @@
     revealObserver.observe(el);
   });
 
+  /* ── Entrada escalonada en grillas ───────────────── */
+  /* Las tarjetas de una misma grilla entran una detrás
+     de otra en vez de todas juntas. */
+  document.querySelectorAll('[data-reveal-stagger]').forEach((group) => {
+    Array.from(group.children).forEach((child, i) => {
+      if (child.hasAttribute('data-reveal') && !child.hasAttribute('data-reveal-delay')) {
+        child.style.setProperty('--reveal-delay', `${i * 90}ms`);
+      }
+    });
+  });
+
   /* ── Counters ───────────────────────────────────── */
   const counters = document.querySelectorAll('[data-counter]');
   const counterObserver = new IntersectionObserver(
@@ -137,6 +148,41 @@
   );
 
   counters.forEach((c) => counterObserver.observe(c));
+
+  /* ── Foco que sigue el cursor (tarjetas) ─────────── */
+  /* Un halo lima muy sutil sigue al mouse dentro de la tarjeta.
+     Solo en dispositivos con puntero fino y sin reduced-motion. */
+  const spotlightCards = document.querySelectorAll('[data-spotlight]');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (spotlightCards.length && canHover && !reduceMotion) {
+    spotlightCards.forEach((card) => {
+      let x = 0;
+      let y = 0;
+      let queued = false;
+
+      const paint = () => {
+        queued = false;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${x - rect.left}px`);
+        card.style.setProperty('--my', `${y - rect.top}px`);
+      };
+
+      card.addEventListener(
+        'pointermove',
+        (e) => {
+          x = e.clientX;
+          y = e.clientY;
+          if (!queued) {
+            queued = true;
+            requestAnimationFrame(paint);
+          }
+        },
+        { passive: true }
+      );
+    });
+  }
 
   /* ── Carousel ────────────────────────────────────── */
   const carousel = document.querySelector('.carousel');
