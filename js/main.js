@@ -138,26 +138,6 @@
 
   counters.forEach((c) => counterObserver.observe(c));
 
-  /* ── Stack bars ─────────────────────────────────── */
-  const bars = document.querySelectorAll('.stack-bar__fill');
-  const barObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const width = bar.dataset.width || '0';
-          requestAnimationFrame(() => {
-            bar.style.width = `${width}%`;
-          });
-          barObserver.unobserve(bar);
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
-
-  bars.forEach((b) => barObserver.observe(b));
-
   /* ── Carousel ────────────────────────────────────── */
   const carousel = document.querySelector('.carousel');
   if (carousel) {
