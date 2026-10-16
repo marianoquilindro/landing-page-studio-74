@@ -1029,13 +1029,6 @@ h3 {
   color: var(--cream-40);
 }
 
-.project-featured__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.8rem;
-}
-
 /* ═══════════════════════════════════════════════════════
    COMING SOON
 ═══════════════════════════════════════════════════════ */
