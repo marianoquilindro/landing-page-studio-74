@@ -201,28 +201,135 @@
   }
 
   /* ── Contact form ───────────────────────────────── */
+  /* Doble modo:
+     1. Si existe contact.php (hosting con PHP) → envío vía fetch, todo server-side.
+     2. Si no (GitHub Pages) o si el servidor falla → fallback: abrimos el
+        cliente de correo del visitante con el mensaje precargado.
+     Nunca mostramos "mensaje enviado" si no se envió nada. */
   const form = document.getElementById('contactForm');
   if (form) {
     const submitBtn = form.querySelector('.btn--primary');
-    const originalHTML = submitBtn ? submitBtn.innerHTML : '';
+    const note = form.querySelector('.form__note');
+    const startedInput = form.querySelector('[name="started"]');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+    const originalNote = note ? note.textContent : '';
+    const CONTACT_EMAIL = 'hola@studio74.com.ar';
+    const CHECK_SVG = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>`;
 
-    form.addEventListener('submit', (e) => {
+    let stateTimer = null;
+
+    const refreshStarted = () => {
+      if (startedInput) startedInput.value = String(Math.floor(Date.now() / 1000));
+    };
+
+    /* state: 'is-loading' | 'is-sent' | 'is-error' | null */
+    const setState = (state, opts = {}) => {
+      const { btn = null, note: noteText = null, ms = 4200, reset = false } = opts;
+      clearTimeout(stateTimer);
+      form.classList.remove('is-loading', 'is-sent', 'is-error');
+      if (state) form.classList.add(state);
+      if (submitBtn) {
+        submitBtn.disabled = state === 'is-loading';
+        if (btn) submitBtn.innerHTML = btn;
+      }
+      if (note && noteText) note.textContent = noteText;
+      if (state === 'is-loading') return;
+
+      stateTimer = setTimeout(() => {
+        form.classList.remove('is-sent', 'is-error');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+        if (note) note.textContent = originalNote;
+        if (reset) {
+          form.reset();
+          refreshStarted();
+        }
+      }, ms);
+    };
+
+    refreshStarted();
+
+    const openMailto = (data) => {
+      const subject = `Consulta desde la web — ${data.get('service') || 'Proyecto'}`;
+      const body = [
+        `Nombre: ${data.get('name') || ''}`,
+        `Email: ${data.get('email') || ''}`,
+        `Tipo de proyecto: ${data.get('service') || ''}`,
+        '',
+        data.get('message') || '',
+      ].join('\n');
+      const a = document.createElement('a');
+      a.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!submitBtn) return;
+      if (form.classList.contains('is-loading') || form.classList.contains('is-sent')) return;
 
-      form.classList.add('is-sent');
-      submitBtn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-        ¡Mensaje enviado!
-      `;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
-      setTimeout(() => {
-        form.classList.remove('is-sent');
-        submitBtn.innerHTML = originalHTML;
-        form.reset();
-      }, 4200);
+      // Honeypot lleno → bot: éxito falso, sin abrir nada.
+      const hp = form.querySelector('[name="company"]');
+      if (hp && hp.value.trim() !== '') {
+        setState('is-sent', { btn: `${CHECK_SVG} ¡Mensaje enviado!`, reset: true });
+        return;
+      }
+
+      const data = new FormData(form);
+      setState('is-loading', { btn: 'Enviando…' });
+
+      // 1) Intento vía contact.php (activo en hosting con PHP)
+      try {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 10000);
+        const res = await fetch('contact.php', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+          signal: ctrl.signal,
+        });
+        clearTimeout(timeout);
+
+        if (res.status === 429) {
+          const info = await res.json().catch(() => null);
+          setState('is-error', {
+            btn: 'No se pudo enviar',
+            note: (info && info.message) || 'Demasiados envíos, probá de nuevo en unos minutos',
+            ms: 6000,
+          });
+          return;
+        }
+
+        if (res.ok) {
+          const info = await res.json().catch(() => null);
+          if (info && info.ok) {
+            setState('is-sent', { btn: `${CHECK_SVG} ¡Mensaje enviado!`, reset: true });
+            return;
+          }
+        }
+        // 404 (GitHub Pages) u otra respuesta del servidor → fallback de mail.
+      } catch (_) {
+        // Sin PHP o sin conexión → fallback de mail.
+      }
+
+      openMailto(data);
+      setState('is-sent', {
+        btn: 'Se abrió tu correo',
+        note: 'El mensaje está listo en tu app de correo: solo tenés que darle a enviar.',
+        ms: 6000,
+      });
     });
   }
 })();
