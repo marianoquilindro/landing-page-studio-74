@@ -4,6 +4,10 @@
 ═══════════════════════════════════════════════════════ */
 
 :root {
+  /* Controles nativos (selects, scrollbars, autofill) en modo oscuro:
+     sin esto, el popup del <select> se pinta blanco y el texto crema no se lee. */
+  color-scheme: dark;
+
   --ink: #0B0B0C;
   --ink-deep: #050506;
   --ink-soft: #101114;
@@ -1366,9 +1370,17 @@ a.contact-item__text:focus-visible {
 
 .form__select {
   appearance: none;
+  color-scheme: dark;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D2FF3A' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
+}
+
+/* Opciones del desplegable: sin esto, en Windows/Linux el popup nativo
+   muestra texto crema sobre fondo blanco (invisible hasta el hover). */
+.form__select option {
+  background-color: var(--ink-card);
+  color: var(--cream);
 }
 
 .form__textarea {
