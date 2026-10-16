@@ -227,10 +227,13 @@
   }
 
   /* ── Contact form ───────────────────────────────── */
-  /* Doble modo:
-     1. Si existe contact.php (hosting con PHP) → envío vía fetch, todo server-side.
-     2. Si no (GitHub Pages) o si el servidor falla → fallback: abrimos el
-        cliente de correo del visitante con el mensaje precargado.
+  /* Tres modos, en este orden:
+     1. contact.php — hosting con PHP (Hostinger). No usa terceros.
+     2. formsubmit.co — relay para hosting estático (GitHub Pages), donde
+        el PHP no corre. Requiere activar el formulario UNA vez: el primer
+        envío dispara un mail de confirmación al buzón.
+     3. mailto: — último recurso: abrimos el cliente de correo del
+        visitante con el mensaje precargado.
      Nunca mostramos "mensaje enviado" si no se envió nada. */
   const form = document.getElementById('contactForm');
   if (form) {
@@ -239,7 +242,8 @@
     const startedInput = form.querySelector('[name="started"]');
     const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
     const originalNote = note ? note.textContent : '';
-    const CONTACT_EMAIL = 'hola@studio74.com.ar';
+    const CONTACT_EMAIL = 'studio74dev@gmail.com';
+    const RELAY_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
     const CHECK_SVG = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <polyline points="20 6 9 17 4 12" />
@@ -296,6 +300,61 @@
       a.remove();
     };
 
+    /* 1) contact.php — hosting con PHP. Devuelve 'sent' | 'limit' | 'fail' */
+    const sendViaPhp = async (data) => {
+      try {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 10000);
+        const res = await fetch('contact.php', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+          signal: ctrl.signal,
+        });
+        clearTimeout(timeout);
+
+        if (res.status === 429) {
+          const info = await res.json().catch(() => null);
+          return {
+            state: 'limit',
+            message: (info && info.message) || 'Demasiados envíos, probá de nuevo en unos minutos',
+          };
+        }
+
+        const info = await res.json().catch(() => null);
+        return res.ok && info && info.ok ? { state: 'sent' } : { state: 'fail' };
+      } catch (_) {
+        // Sin PHP (GitHub Pages) o sin red: seguimos con el relay.
+        return { state: 'fail' };
+      }
+    };
+
+    /* 2) formsubmit.co — relay para hosting estático, donde el PHP no corre */
+    const sendViaRelay = async (data) => {
+      try {
+        const res = await fetch(RELAY_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: data.get('name') || '',
+            email: data.get('email') || '',
+            _replyto: data.get('email') || '',
+            'Tipo de proyecto': data.get('service') || '',
+            message: data.get('message') || '',
+            _subject: `Consulta desde la web — ${data.get('service') || 'Proyecto'}`,
+            _template: 'table',
+          }),
+        });
+        if (!res.ok) return false;
+        const info = await res.json().catch(() => null);
+        // El relay contesta { "success": "true" | "false" }.
+        // Solo damos por enviado si lo confirma.
+        return !!info && String(info.success).toLowerCase() === 'true';
+      } catch (_) {
+        return false;
+      }
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!submitBtn) return;
@@ -316,40 +375,24 @@
       const data = new FormData(form);
       setState('is-loading', { btn: 'Enviando…' });
 
-      // 1) Intento vía contact.php (activo en hosting con PHP)
-      try {
-        const ctrl = new AbortController();
-        const timeout = setTimeout(() => ctrl.abort(), 10000);
-        const res = await fetch('contact.php', {
-          method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' },
-          signal: ctrl.signal,
+      const sent = () => setState('is-sent', { btn: `${CHECK_SVG} ¡Mensaje enviado!`, reset: true });
+
+      // 1) Hosting con PHP (Hostinger): envío propio, sin terceros.
+      const php = await sendViaPhp(data);
+      if (php.state === 'sent') return sent();
+      if (php.state === 'limit') {
+        setState('is-error', {
+          btn: 'No se pudo enviar',
+          note: php.message,
+          ms: 6000,
         });
-        clearTimeout(timeout);
-
-        if (res.status === 429) {
-          const info = await res.json().catch(() => null);
-          setState('is-error', {
-            btn: 'No se pudo enviar',
-            note: (info && info.message) || 'Demasiados envíos, probá de nuevo en unos minutos',
-            ms: 6000,
-          });
-          return;
-        }
-
-        if (res.ok) {
-          const info = await res.json().catch(() => null);
-          if (info && info.ok) {
-            setState('is-sent', { btn: `${CHECK_SVG} ¡Mensaje enviado!`, reset: true });
-            return;
-          }
-        }
-        // 404 (GitHub Pages) u otra respuesta del servidor → fallback de mail.
-      } catch (_) {
-        // Sin PHP o sin conexión → fallback de mail.
+        return;
       }
 
+      // 2) Hosting estático (GitHub Pages): relay por FormSubmit.
+      if (await sendViaRelay(data)) return sent();
+
+      // 3) Último recurso: abrimos el correo del visitante.
       openMailto(data);
       setState('is-sent', {
         btn: 'Se abrió tu correo',

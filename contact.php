@@ -7,10 +7,14 @@
  *
  * EN HOSTINGER:
  *   1. Subir este archivo junto al resto del sitio a public_html/
- *   2. Crear el buzón hola@studio74.com.ar en hPanel → Emails
+ *   2. Crear el buzón no-reply@studio74.com.ar en hPanel → Emails
+ *      (el remitente tiene que ser de tu dominio, ver FROM_EMAIL)
  *   3. Listo: el formulario de la landing pasa a modo PHP solo, sin
- *      tocar el JavaScript (si contact.php no existe, el front cae
- *      automáticamente en el fallback mailto:).
+ *      tocar el JavaScript (si contact.php no existe —por ejemplo en
+ *      GitHub Pages— el front cae en el relay de FormSubmit y, si ese
+ *      tampoco responde, en el fallback mailto:).
+ *
+ * Los mensajes llegan a TO_EMAIL (el Gmail del estudio).
  *
  * Si mail() estuviera deshabilitado en tu hosting, la alternativa es
  * PHPMailer apuntando al SMTP de Hostinger (las credenciales del
@@ -20,7 +24,13 @@
  */
 
 // ── Configuración ────────────────────────────────────────────────────────────
-const TO_EMAIL      = 'hola@studio74.com.ar';
+const TO_EMAIL      = 'studio74dev@gmail.com';
+
+// Remitente. Tiene que ser un buzón de TU dominio: si se envía "desde"
+// Gmail, Gmail lo manda a spam (este servidor no está autorizado a mandar
+// en nombre de gmail.com). Cuando el dominio esté creado, dejá acá
+// no-reply@studio74.com.ar y creá ese buzón en hPanel → Emails.
+const FROM_EMAIL    = 'no-reply@studio74.com.ar';
 const FROM_NAME     = 'Studio 74 Web';
 const SUBJECT_PRE   = 'Consulta desde la web';
 const MAX_PER_HOUR  = 5;      // envíos máximos por IP por hora
@@ -144,8 +154,7 @@ if ($fh !== false) {
 }
 
 // ── Armado del mail ─────────────────────────────────────────────────────────
-$domain  = substr((string) strrchr(TO_EMAIL, '@'), 1);
-$from    = FROM_NAME . ' <no-reply@' . $domain . '>';
+$from    = FROM_NAME . ' <' . FROM_EMAIL . '>';
 $subject = SUBJECT_PRE . ' — ' . $service;
 
 $body  = "Consulta desde la web de Studio 74\n";
@@ -164,9 +173,10 @@ $headers .= 'X-Mailer: Studio74-Contact';
 
 // Asunto UTF-8 codificado según RFC 2047 (tildes y ñ se ven bien en todos los clientes).
 $subjectEnc  = '=?UTF-8?B?' . base64_encode($subject) . '?=';
-$envelopeFrom = '-fno-reply@' . $domain;
 
-$sent = @mail(TO_EMAIL, $subjectEnc, $body, $headers, $envelopeFrom);
+// El sobre (-f) va con el mismo remitente del dominio: ayuda a que Gmail
+// no lo tome como spam (SPF alineado).
+$sent = @mail(TO_EMAIL, $subjectEnc, $body, $headers, '-f' . FROM_EMAIL);
 
 if (!$sent) {
     // El front ofrece el fallback mailto: al recibir este error.
