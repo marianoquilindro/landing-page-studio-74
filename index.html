@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Studio 74 — Startup de desarrollo web. Construimos productos digitales modernos, funcionales y con identidad propia." />
+  <title>Studio 74 — Desarrollo Web</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════ -->
+  <header>
+    <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+      <a href="#hero" class="nav__logo" aria-label="Studio 74 — inicio">
+        <svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
+          aria-label="Isotipo Studio 74">
+          <rect width="100" height="100" fill="#0B0B0C" />
+          <g fill="none" stroke="#D2FF3A">
+            <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
+            <path d="M7.7 90.4H18" stroke-width="6.4" />
+            <path d="M90 7.7V78" stroke-width="5.5" />
+            <path d="M90 19L52 59.5M50 60.5H90" stroke-width="4.2" />
+          </g>
+          <rect x="85" y="86" width="8" height="8" fill="#D2FF3A" />
+        </svg>
+        <span class="nav__logo-text">Studio <strong>74</strong></span>
+      </a>
+
+      <ul class="nav__links" id="navLinks" role="menubar">
+        <li role="none"><a href="#about" class="nav__link" role="menuitem">Nosotros</a></li>
+        <li role="none"><a href="#projects" class="nav__link" role="menuitem">Proyectos</a></li>
+        <li role="none"><a href="#stack" class="nav__link" role="menuitem">Stack</a></li>
+        <li role="none"><a href="#contact" class="nav__cta" role="menuitem">Contacto</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════════ -->
+    <section id="hero" class="hero" aria-label="Presentación">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__content">
+            <div class="hero__eyebrow">
+              <span class="label">Desarrollo web ·</span>
+            </div>
+
+            <h1 class="hero__title">
+              Hacemos<br />
+              que las ideas<br />
+              <em>cobren vida.</em>
+            </h1>
+
+            <p class="hero__desc lead">
+              Somos cuatro desarrolladores que construyen productos digitales
+              con diseño cuidado, código sólido y mucho compromiso.
+            </p>
+
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn-primary">
+                Ver proyectos
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-ghost">Hablemos</a>
+            </div>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <svg class="hero__mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
+              aria-label="Studio 74 — marca">
+              <rect width="100" height="100" fill="#D2FF3A" />
+              <g fill="none" stroke="#0B0B0C">
+                <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
+                <path d="M7.7 90.4H18" stroke-width="6.4" />
+                <path d="M90 7.7V78" stroke-width="5.5" />
+                <path d="M90 19L52 59.5M50 60.5H90" stroke-width="4.2" />
+              </g>
+              <rect x="85" y="86" width="8" height="8" fill="#0B0B0C" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         STATS STRIP
+    ════════════════════════════════════════════════ -->
+    <div class="stats-strip" aria-label="Datos del estudio">
+      <div class="container">
+        <div class="stats-strip__grid">
+          <div class="stat-item reveal">
+            <span class="stat-item__num">4</span>
+            <span class="stat-item__label">Founders</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-1">
+            <span class="stat-item__num">+5</span>
+            <span class="stat-item__label">Proyectos entregados</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-2">
+            <span class="stat-item__num">2026</span>
+            <span class="stat-item__label">Fundación</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-3">
+            <span class="stat-item__num">100%</span>
+            <span class="stat-item__label">Dedicación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════
+         ABOUT
+    ════════════════════════════════════════════════ -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about__grid">
+
+          <!-- Text column -->
+          <div class="about__text reveal">
+            <span class="label">Quiénes somos</span>
+            <h2 id="about-heading">
+              Un estudio chico<br />
+              con ideas <span class="text-signal">grandes.</span>
+            </h2>
+
+            <div class="about__body">
+              <p>
+                Studio 74 nació de la unión de cuatro amigos con una visión en común:
+                construir productos digitales que no sólo funcionen, sino que se vean
+                y se sientan bien.
+              </p>
+              <p>
+                Nos especializamos en desarrollo web full-stack, desde landing pages hasta aplicaciones web complejas a
+                medida. Cada proyecto
+                lo tratamos como propio.
+              </p>
+              <p>
+                Trabajamos con comunicación directa, metodologías ágiles y entregas
+                iterativas para que el cliente siempre esté en control.
+              </p>
+            </div>
+
+            <div class="about__team">
+              <span class="about__team-label">El equipo</span>
+              <div class="about__avatars">
+                <div class="avatar" title="Mariano">M</div>
+                <div class="avatar" title="Ramiro">R</div>
+                <div class="avatar" title="Gerónimo">G</div>
+                <div class="avatar" title="Valentín">V</div>
+                <span class="avatar__name" style="margin-left:0.5rem">
+                  Mariano · Ramiro · Gerónimo · Valentín
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Values grid -->
+          <div class="about__values reveal reveal-delay-1">
+            <div class="value-card">
+              <div class="value-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <h3>Desarrollo a medida</h3>
+              <p>Soluciones construidas desde cero, adaptadas a cada necesidad y contexto.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <h3>Diseño con identidad</h3>
+              <p>Cuidamos la experiencia visual y la usabilidad en cada pantalla que construimos.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <h3>Entregas ágiles</h3>
+              <p>Iteramos rápido. Feedback constante para que el resultado supere las expectativas.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3>Soporte continuo</h3>
+              <p>El proyecto no termina en el deploy. Acompañamos el crecimiento del producto.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         PROJECTS
+    ════════════════════════════════════════════════ -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="projects__header reveal">
+          <div>
+            <span class="label">Proyectos</span>
+            <h2 id="projects-heading">Lo que <span class="text-signal">construimos.</span></h2>
+            <p class="lead" style="margin-top:.75rem">
+              Una selección de trabajos que muestran lo que podemos hacer por tu proyecto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Featured: Club El Progreso -->
+        <article class="project-featured reveal" aria-label="Proyecto destacado: Club El Progreso">
+          <div class="project-featured__media">
+            <div class="screenshot-carousel" role="region" aria-label="Capturas del proyecto">
+              <div class="screenshot-carousel__track">
+                <div class="screenshot-carousel__slide">
+                  <img src="assets/img/progreso-dashboard.png"
+                    alt="Club El Progreso — Panel principal con métricas de socios y sombrillas" loading="eager" />
+                </div>
+                <div class="screenshot-carousel__slide">
+                  <img src="assets/img/progreso-mapa.png"
+                    alt="Club El Progreso — Mapa interactivo de sombrillas y pileta" loading="lazy" />
+                </div>
+                <div class="screenshot-carousel__slide">
+                  <img src="assets/img/progreso-recaudacion.png"
+                    alt="Club El Progreso — Módulo de recaudación y cobranzas" loading="lazy" />
+                </div>
+              </div>
+              <div class="carousel-dots" role="tablist" aria-label="Diapositivas">
+                <button class="carousel-dot" role="tab" aria-label="Vista 1" aria-selected="true"></button>
+                <button class="carousel-dot" role="tab" aria-label="Vista 2" aria-selected="false"></button>
+                <button class="carousel-dot" role="tab" aria-label="Vista 3" aria-selected="false"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-featured__content">
+            <div class="project-featured__top">
+              <span class="project-featured__num">— Proyecto 01</span>
+              <h3 class="project-featured__title">Club<br />El Progreso</h3>
+
+              <p class="project-featured__desc">
+                Sistema de gestión integral para club de playa. Digitalización completa
+                del manejo de socios, sombrillas y cobros de temporada.
+              </p>
+
+              <ul class="feature-list">
+                <li>Mapa interactivo de sombrillas con estados en tiempo real</li>
+                <li>Gestión de socios, cupos familiares y grupos</li>
+                <li>Panel de recaudación con control de temporada</li>
+                <li>Tarifas y planes diferenciados por tipo de socio</li>
+                <li>Historial de cambios y trazabilidad de cobros</li>
+              </ul>
+
+              <div class="project-tags">
+                <span class="tag">Web App</span>
+                <span class="tag">Full Stack</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div class="project-featured__bottom">
+              <span class="project-featured__year">Temporada 2026 / 2027</span>
+              <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:.7rem 1.4rem">
+                ¿Algo similar?
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Coming soon grid -->
+        <div class="projects-soon">
+          <div class="project-soon-card reveal">
+            <span class="project-soon-card__num">— 02</span>
+            <div class="project-tags">
+              <span class="tag">E-commerce</span>
+              <span class="tag">Next.js</span>
+            </div>
+            <h3>Tienda online</h3>
+            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
+              Plataforma de venta en línea con catálogo dinámico, carrito y pasarela de pagos.
+            </p>
+            <span class="project-soon-card__status">En desarrollo</span>
+            <span class="project-soon-card__bg-num" aria-hidden="true">02</span>
+          </div>
+          <div class="project-soon-card reveal reveal-delay-1">
+            <span class="project-soon-card__num">— 03</span>
+            <div class="project-tags">
+              <span class="tag">Landing</span>
+              <span class="tag">UI/UX</span>
+            </div>
+            <h3>Sitio institucional</h3>
+            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
+              Presencia digital profesional para empresa de servicios con CMS integrado.
+            </p>
+            <span class="project-soon-card__status">En desarrollo</span>
+            <span class="project-soon-card__bg-num" aria-hidden="true">03</span>
+          </div>
+          <div class="project-soon-card reveal reveal-delay-2">
+            <span class="project-soon-card__num">— 04</span>
+            <div class="project-tags">
+              <span class="tag">Dashboard</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <h3>Panel de gestión</h3>
+            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
+              Sistema interno de métricas y reportes para pequeña empresa. En fase de diseño.
+            </p>
+            <span class="project-soon-card__status">Próximamente</span>
+            <span class="project-soon-card__bg-num" aria-hidden="true">04</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         STACK
+    ════════════════════════════════════════════════ -->
+    <section id="stack" aria-labelledby="stack-heading">
+      <div class="container">
+        <div class="stack__intro">
+          <div class="reveal">
+            <span class="label">Stack tecnológico</span>
+            <h2 id="stack-heading">
+              Nuestras<br />
+              <span class="text-signal">herramientas.</span>
+            </h2>
+          </div>
+          <p class="lead reveal reveal-delay-1">
+            Tecnologías modernas y probadas en producción para construir
+            productos sólidos, performantes y escalables.
+          </p>
+        </div>
+
+        <div class="stack__grid">
+
+          <!-- Frontend -->
+          <div class="stack-cat reveal">
+            <div class="stack-cat__header">
+              <div class="stack-cat__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <span class="stack-cat__name">Frontend</span>
+            </div>
+            <div class="stack-items">
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">React / Next.js</span>
+                  <span class="stack-item__pct">95%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="95"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">TypeScript</span>
+                  <span class="stack-item__pct">85%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="85"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Tailwind CSS</span>
+                  <span class="stack-item__pct">92%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="92"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">HTML / CSS / JS</span>
+                  <span class="stack-item__pct">100%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="stack-cat reveal reveal-delay-1">
+            <div class="stack-cat__header">
+              <div class="stack-cat__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+              <span class="stack-cat__name">Backend</span>
+            </div>
+            <div class="stack-items">
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Node.js</span>
+                  <span class="stack-item__pct">90%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="90"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Express / Fastify</span>
+                  <span class="stack-item__pct">87%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="87"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Python / Django</span>
+                  <span class="stack-item__pct">75%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="75"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">REST APIs</span>
+                  <span class="stack-item__pct">93%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="93"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="stack-cat reveal reveal-delay-2">
+            <div class="stack-cat__header">
+              <div class="stack-cat__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" />
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                </svg>
+              </div>
+              <span class="stack-cat__name">Base de datos</span>
+            </div>
+            <div class="stack-items">
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">PostgreSQL</span>
+                  <span class="stack-item__pct">88%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="88"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">MongoDB</span>
+                  <span class="stack-item__pct">80%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="80"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Supabase</span>
+                  <span class="stack-item__pct">82%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="82"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Firebase</span>
+                  <span class="stack-item__pct">75%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevOps -->
+          <div class="stack-cat reveal reveal-delay-3">
+            <div class="stack-cat__header">
+              <div class="stack-cat__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                </svg>
+              </div>
+              <span class="stack-cat__name">DevOps & Deploy</span>
+            </div>
+            <div class="stack-items">
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Git / GitHub</span>
+                  <span class="stack-item__pct">97%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="97"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Vercel / Netlify</span>
+                  <span class="stack-item__pct">92%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="92"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">Docker</span>
+                  <span class="stack-item__pct">78%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="78"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__top">
+                  <span class="stack-item__name">AWS / GCP</span>
+                  <span class="stack-item__pct">70%</span>
+                </div>
+                <div class="stack-bar-wrap">
+                  <div class="stack-bar" data-width="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         CONTACT
+    ════════════════════════════════════════════════ -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__grid">
+
+          <!-- Info -->
+          <div class="contact__info reveal">
+            <span class="label">Contacto</span>
+            <h2 id="contact-heading">
+              Hablemos de tu<br />
+              <span class="text-signal">próximo proyecto.</span>
+            </h2>
+            <p>
+              ¿Tenés una idea en mente? ¿Necesitás renovar tu presencia digital?
+              Contanos de qué se trata y lo charlamos sin compromiso.
+              Te respondemos en menos de 24 hs.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <span>hola@studio74.com.ar</span>
+              </div>
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </div>
+                <span>@studio74.ar</span>
+              </div>
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <span>Argentina</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="reveal reveal-delay-1">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="given-name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="tu@email.com" required
+                    autocomplete="email" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service">¿Qué necesitás?</label>
+                <select id="service" name="service">
+                  <option value="" disabled selected>Seleccioná un servicio</option>
+                  <option>Landing page</option>
+                  <option>Sitio web institucional</option>
+                  <option>E-commerce</option>
+                  <option>Aplicación web a medida</option>
+                  <option>Sistema de gestión</option>
+                  <option>Diseño UI/UX</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message"
+                  placeholder="Contanos sobre tu proyecto, idea o lo que necesitás..." required></textarea>
+              </div>
+
+              <div class="form-footer">
+                <span class="form-note">Respondemos en menos de 24&nbsp;hs.</span>
+                <button type="submit" class="btn btn-primary">
+                  Enviar mensaje
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <svg class="footer__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
+            aria-label="Studio 74">
+            <rect width="100" height="100" fill="#0B0B0C" />
+            <g fill="none" stroke="#D2FF3A">
+              <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
+              <path d="M7.7 90.4H18" stroke-width="6.4" />
+              <path d="M90 7.7V78" stroke-width="5.5" />
+              <path d="M90 19L52 59.5M50 60.5H90" stroke-width="4.2" />
+            </g>
+            <rect x="85" y="86" width="8" height="8" fill="#D2FF3A" />
+          </svg>
+          <span class="footer__brand-name">Studio <strong>74</strong></span>
+        </div>
+
+        <span class="footer__copy">
+          &copy; 2024 Studio 74 — Todos los derechos reservados.
+        </span>
+
+        <nav class="footer__links" aria-label="Navegación secundaria">
+          <a href="#about">Nosotros</a>
+          <a href="#projects">Proyectos</a>
+          <a href="#stack">Stack</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="js/main.js" defer></script>
+
+</body>
+
+</html>
