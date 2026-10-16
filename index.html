@@ -5,18 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Studio 74 — Startup de desarrollo web. Construimos productos digitales modernos, funcionales y con identidad propia." />
-  <title>Studio 74 — Desarrollo Web</title>
+    content="Studio 74 — Desarrollo web profesional. Creamos sitios y aplicaciones web modernas, rápidas y centradas en experiencia de usuario." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Studio 74 — Desarrollo Web Profesional" />
+  <meta property="og:description"
+    content="Construimos productos digitales con diseño cuidado, código sólido y enfoque en resultados." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <title>Studio 74 — Desarrollo Web Profesional</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet" />
 
   <!-- Styles -->
@@ -28,11 +35,11 @@
   <!-- ════════════════════════════════════════════════
        NAVIGATION
   ════════════════════════════════════════════════ -->
-  <header>
+  <header class="header">
     <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
       <a href="#hero" class="nav__logo" aria-label="Studio 74 — inicio">
         <svg class="nav__logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
-          aria-label="Isotipo Studio 74">
+          aria-label="Isotipo Studio 74" focusable="false">
           <rect width="100" height="100" fill="#0B0B0C" />
           <g fill="none" stroke="#D2FF3A">
             <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
@@ -45,17 +52,21 @@
         <span class="nav__logo-text">Studio <strong>74</strong></span>
       </a>
 
-      <ul class="nav__links" id="navLinks" role="menubar">
+      <ul class="nav__links" id="navLinks" role="menu">
         <li role="none"><a href="#about" class="nav__link" role="menuitem">Nosotros</a></li>
         <li role="none"><a href="#projects" class="nav__link" role="menuitem">Proyectos</a></li>
         <li role="none"><a href="#stack" class="nav__link" role="menuitem">Stack</a></li>
-        <li role="none"><a href="#contact" class="nav__cta" role="menuitem">Contacto</a></li>
+        <li role="none"><a href="#contact" class="nav__link nav__link--cta" role="menuitem">Contacto</a></li>
       </ul>
 
-      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="nav__hamburger" id="hamburger" type="button" aria-label="Abrir menú de navegación"
+        aria-expanded="false" aria-controls="navLinks">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
       </button>
     </nav>
+    <div class="nav__backdrop" id="navBackdrop" aria-hidden="true"></div>
   </header>
 
   <main>
@@ -63,180 +74,181 @@
     <!-- ════════════════════════════════════════════════
          HERO
     ════════════════════════════════════════════════ -->
-    <section id="hero" class="hero" aria-label="Presentación">
-      <div class="hero__bg-grid" aria-hidden="true"></div>
-      <div class="hero__glow" aria-hidden="true"></div>
+    <section id="hero" class="hero" aria-label="Presentación de Studio 74">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--primary"></div>
+        <div class="hero__glow hero__glow--secondary"></div>
+      </div>
 
       <div class="container">
         <div class="hero__inner">
-          <div class="hero__content">
+          <div class="hero__content" data-reveal>
             <div class="hero__eyebrow">
-              <span class="label">Desarrollo web ·</span>
+              <span class="label">Desarrollo web profesional</span>
             </div>
 
             <h1 class="hero__title">
-              Hacemos<br />
-              que las ideas<br />
-              <em>cobren vida.</em>
+              Hacemos
+              <br />
+              que las ideas
+              <br />
+              <span class="text-gradient">cobren vida.</span>
             </h1>
 
             <p class="hero__desc lead">
-              Somos cuatro desarrolladores que construyen productos digitales
-              con diseño cuidado, código sólido y mucho compromiso.
+              Studio 74 es un estudio formado por desarrolladores que construyen productos digitales con diseño
+              cuidado, código sólido y foco en generar valor real para tu negocio.
             </p>
 
             <div class="hero__actions">
-              <a href="#projects" class="btn btn-primary">
+              <a href="#projects" class="btn btn--primary">
                 Ver proyectos
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="M7 17L17 7M7 7h10v10" />
                 </svg>
               </a>
-              <a href="#contact" class="btn btn-ghost">Hablemos</a>
+              <a href="#contact" class="btn btn--ghost">Hablemos sobre tu idea</a>
             </div>
           </div>
 
-          <div class="hero__visual" aria-hidden="true">
-            <svg class="hero__mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
-              aria-label="Studio 74 — marca">
-              <rect width="100" height="100" fill="#D2FF3A" />
-              <g fill="none" stroke="#0B0B0C">
-                <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
-                <path d="M7.7 90.4H18" stroke-width="6.4" />
-                <path d="M90 7.7V78" stroke-width="5.5" />
-                <path d="M90 19L52 59.5M50 60.5H90" stroke-width="4.2" />
-              </g>
-              <rect x="85" y="86" width="8" height="8" fill="#0B0B0C" />
-            </svg>
+          <div class="hero__visual" aria-hidden="true" data-reveal="fade-right">
+            <div class="hero__mark-wrap">
+              <svg class="hero__mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
+                aria-label="Marca Studio 74" focusable="false">
+                <rect width="100" height="100" fill="#D2FF3A" />
+                <g fill="none" stroke="#0B0B0C">
+                  <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
+                  <path d="M7.7 90.4H18" stroke-width="6.4" />
+                  <path d="M90 7.7V78" stroke-width="5.5" />
+                  <path d="M90 19L52 59.5M50 60.5H90" stroke-width="4.2" />
+                </g>
+                <rect x="85" y="86" width="8" height="8" fill="#0B0B0C" />
+              </svg>
+              <div class="hero__mark-orbit"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">
         <span>Scroll</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          focusable="false">
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
       </div>
     </section>
 
     <!-- ════════════════════════════════════════════════
-         STATS STRIP
+         STATS
     ════════════════════════════════════════════════ -->
-    <div class="stats-strip" aria-label="Datos del estudio">
+    <section class="stats" aria-label="Estadísticas del estudio">
       <div class="container">
-        <div class="stats-strip__grid">
-          <div class="stat-item reveal">
-            <span class="stat-item__num">4</span>
-            <span class="stat-item__label">Founders</span>
-          </div>
-          <div class="stat-item reveal reveal-delay-1">
-            <span class="stat-item__num">+5</span>
-            <span class="stat-item__label">Proyectos entregados</span>
-          </div>
-          <div class="stat-item reveal reveal-delay-2">
-            <span class="stat-item__num">2026</span>
-            <span class="stat-item__label">Fundación</span>
-          </div>
-          <div class="stat-item reveal reveal-delay-3">
-            <span class="stat-item__num">100%</span>
-            <span class="stat-item__label">Dedicación</span>
-          </div>
+        <div class="stats__grid">
+          <article class="stat-card" data-reveal>
+            <span class="stat-card__num" data-counter="4">0</span>
+            <span class="stat-card__label">Fundadores</span>
+          </article>
+          <article class="stat-card" data-reveal>
+            <span class="stat-card__num">+<span data-counter="6">0</span></span>
+            <span class="stat-card__label">Proyectos entregados</span>
+          </article>
+          <article class="stat-card" data-reveal>
+            <span class="stat-card__num" data-counter="2026">0</span>
+            <span class="stat-card__label">Año de fundación</span>
+          </article>
+          <article class="stat-card" data-reveal>
+            <span class="stat-card__num"><span data-counter="100">0</span>%</span>
+            <span class="stat-card__label">Dedicación</span>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- ════════════════════════════════════════════════
          ABOUT
     ════════════════════════════════════════════════ -->
-    <section id="about" aria-labelledby="about-heading">
+    <section id="about" class="section about" aria-labelledby="about-heading">
       <div class="container">
+        <div class="section__header" data-reveal>
+          <span class="label">Sobre nosotros</span>
+          <h2 id="about-heading">
+            Un estudio pequeño
+            <br />
+            con <span class="text-gradient">grandes ideas.</span>
+          </h2>
+        </div>
+
         <div class="about__grid">
-
-          <!-- Text column -->
-          <div class="about__text reveal">
-            <span class="label">Quiénes somos</span>
-            <h2 id="about-heading">
-              Un estudio chico<br />
-              con ideas <span class="text-signal">grandes.</span>
-            </h2>
-
-            <div class="about__body">
-              <p>
-                Studio 74 nació de la unión de cuatro amigos con una visión en común:
-                construir productos digitales que no sólo funcionen, sino que se vean
-                y se sientan bien.
-              </p>
-              <p>
-                Nos especializamos en desarrollo web full-stack, desde landing pages hasta aplicaciones web complejas a
-                medida. Cada proyecto
-                lo tratamos como propio.
-              </p>
-              <p>
-                Trabajamos con comunicación directa, metodologías ágiles y entregas
-                iterativas para que el cliente siempre esté en control.
-              </p>
+          <div class="about__content" data-reveal>
+            <p class="lead">
+              Studio 74 nació de la unión de cuatro amigos con un objetivo claro: crear productos digitales que
+              resuelvan problemas reales y generen experiencias memorables.
+            </p>
+            <div class="about__text">
+              <p>Nos especializamos en desarrollo web full-stack, desde landing pages con alto impacto hasta
+                aplicaciones web a medida. Cada proyecto lo abordamos con atención al detalle, pensando tanto en
+                performance como en usabilidad.</p>
+              <p>Creemos en la comunicación directa, iteraciones rápidas y entregas transparentes. Así, el cliente
+                participa activamente durante todo el proceso y obtiene exactamente lo que necesita.</p>
             </div>
 
-            <div class="about__team">
-              <span class="about__team-label">El equipo</span>
-              <div class="about__avatars">
-                <div class="avatar" title="Mariano">M</div>
-                <div class="avatar" title="Ramiro">R</div>
-                <div class="avatar" title="Gerónimo">G</div>
-                <div class="avatar" title="Valentín">V</div>
-                <span class="avatar__name" style="margin-left:0.5rem">
-                  Mariano · Ramiro · Gerónimo · Valentín
-                </span>
+            <div class="team">
+              <span class="team__label">El equipo</span>
+              <div class="team__list">
+                <div class="team__avatar" data-tooltip="Mariano — Desarrollo Full-Stack">M</div>
+                <div class="team__avatar" data-tooltip="Ramiro — Backend & Arquitectura">R</div>
+                <div class="team__avatar" data-tooltip="Gerónimo — Frontend & UI">G</div>
+                <div class="team__avatar" data-tooltip="Valentín — Producto & UX">V</div>
+                <span class="team__names">Mariano · Ramiro · Gerónimo · Valentín</span>
               </div>
             </div>
           </div>
 
-          <!-- Values grid -->
-          <div class="about__values reveal reveal-delay-1">
-            <div class="value-card">
+          <div class="values" data-reveal>
+            <article class="value-card">
               <div class="value-card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <polyline points="16 18 22 12 16 6" />
                   <polyline points="8 6 2 12 8 18" />
                 </svg>
               </div>
               <h3>Desarrollo a medida</h3>
-              <p>Soluciones construidas desde cero, adaptadas a cada necesidad y contexto.</p>
-            </div>
-            <div class="value-card">
+              <p>Cada línea de código responde a un objetivo. Soluciones pensadas exclusivamente para tu caso de uso.</p>
+            </article>
+            <article class="value-card">
               <div class="value-card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 </svg>
               </div>
-              <h3>Diseño con identidad</h3>
-              <p>Cuidamos la experiencia visual y la usabilidad en cada pantalla que construimos.</p>
-            </div>
-            <div class="value-card">
+              <h3>UX/UI centrado en usuario</h3>
+              <p>Diseñamos interfaces claras, intuitivas y atractivas que convierten visitas en resultados.</p>
+            </article>
+            <article class="value-card">
               <div class="value-card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
                 </svg>
               </div>
-              <h3>Entregas ágiles</h3>
-              <p>Iteramos rápido. Feedback constante para que el resultado supere las expectativas.</p>
-            </div>
-            <div class="value-card">
+              <h3>Performance & SEO</h3>
+              <p>Sitios rápidos, optimizados para buscadores y listos para escalar desde el primer día.</p>
+            </article>
+            <article class="value-card">
               <div class="value-card__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <h3>Soporte continuo</h3>
-              <p>El proyecto no termina en el deploy. Acompañamos el crecimiento del producto.</p>
-            </div>
+              <h3>Soporte a largo plazo</h3>
+              <p>Acompañamos el crecimiento de tu producto con mantenimiento, mejoras y actualizaciones.</p>
+            </article>
           </div>
-
         </div>
       </div>
     </section>
@@ -244,357 +256,384 @@
     <!-- ════════════════════════════════════════════════
          PROJECTS
     ════════════════════════════════════════════════ -->
-    <section id="projects" aria-labelledby="projects-heading">
+    <section id="projects" class="section projects" aria-labelledby="projects-heading">
       <div class="container">
-        <div class="projects__header reveal">
-          <div>
+        <div class="projects__header" data-reveal>
+          <div class="projects__header-text">
             <span class="label">Proyectos</span>
-            <h2 id="projects-heading">Lo que <span class="text-signal">construimos.</span></h2>
-            <p class="lead" style="margin-top:.75rem">
-              Una selección de trabajos que muestran lo que podemos hacer por tu proyecto.
+            <h2 id="projects-heading">
+              Lo que
+              <span class="text-gradient">construimos.</span>
+            </h2>
+            <p class="lead">
+              Una selección de trabajos que reflejan nuestro enfoque: resolver problemas, mejorar procesos y crear
+              experiencias que generan resultados.
             </p>
           </div>
         </div>
 
-        <!-- Featured: Club El Progreso -->
-        <article class="project-featured reveal" aria-label="Proyecto destacado: Club El Progreso">
+        <!-- Featured -->
+        <article class="project-featured" data-reveal>
           <div class="project-featured__media">
-            <div class="screenshot-carousel" role="region" aria-label="Capturas del proyecto">
-              <div class="screenshot-carousel__track">
-                <div class="screenshot-carousel__slide">
-                  <img src="assets/img/progreso-dashboard.png"
-                    alt="Club El Progreso — Panel principal con métricas de socios y sombrillas" loading="eager" />
-                </div>
-                <div class="screenshot-carousel__slide">
-                  <img src="assets/img/progreso-mapa.png"
-                    alt="Club El Progreso — Mapa interactivo de sombrillas y pileta" loading="lazy" />
-                </div>
-                <div class="screenshot-carousel__slide">
-                  <img src="assets/img/progreso-recaudacion.png"
-                    alt="Club El Progreso — Módulo de recaudación y cobranzas" loading="lazy" />
+            <div class="carousel" role="region" aria-label="Capturas de Club El Progreso">
+              <div class="carousel__track">
+                <div class="carousel__slides">
+                  <div class="carousel__slide">
+                    <img src="assets/img/progreso-dashboard.png"
+                      alt="Panel principal de Club El Progreso con métricas y resumen de ocupación" loading="eager" />
+                  </div>
+                  <div class="carousel__slide">
+                    <img src="assets/img/progreso-mapa.png" alt="Mapa interactivo de sombrillas y pileta del club"
+                      loading="lazy" />
+                  </div>
+                  <div class="carousel__slide">
+                    <img src="assets/img/progreso-recaudacion.png" alt="Módulo de recaudación y estado de cobranzas"
+                      loading="lazy" />
+                  </div>
                 </div>
               </div>
-              <div class="carousel-dots" role="tablist" aria-label="Diapositivas">
-                <button class="carousel-dot" role="tab" aria-label="Vista 1" aria-selected="true"></button>
-                <button class="carousel-dot" role="tab" aria-label="Vista 2" aria-selected="false"></button>
-                <button class="carousel-dot" role="tab" aria-label="Vista 3" aria-selected="false"></button>
+              <div class="carousel__dots" role="tablist" aria-label="Seleccionar vista">
+                <button class="carousel__dot is-active" role="tab" aria-selected="true" aria-label="Vista 1"></button>
+                <button class="carousel__dot" role="tab" aria-selected="false" aria-label="Vista 2"></button>
+                <button class="carousel__dot" role="tab" aria-selected="false" aria-label="Vista 3"></button>
               </div>
             </div>
           </div>
 
           <div class="project-featured__content">
-            <div class="project-featured__top">
-              <span class="project-featured__num">— Proyecto 01</span>
-              <h3 class="project-featured__title">Club<br />El Progreso</h3>
-
+            <header class="project-featured__header">
+              <span class="project-featured__kicker">Proyecto destacado · 01</span>
+              <h3 class="project-featured__title">Club El Progreso</h3>
               <p class="project-featured__desc">
-                Sistema de gestión integral para club de playa. Digitalización completa
-                del manejo de socios, sombrillas y cobros de temporada.
+                Sistema de gestión integral para club de playa. Digitalizamos la administración de socios, asignación
+                de sombrillas, tarifas y recaudación para optimizar tiempos y reducir errores.
               </p>
+            </header>
 
-              <ul class="feature-list">
-                <li>Mapa interactivo de sombrillas con estados en tiempo real</li>
-                <li>Gestión de socios, cupos familiares y grupos</li>
-                <li>Panel de recaudación con control de temporada</li>
-                <li>Tarifas y planes diferenciados por tipo de socio</li>
-                <li>Historial de cambios y trazabilidad de cobros</li>
-              </ul>
+            <ul class="feature-list">
+              <li class="feature-list__item">
+                <span class="feature-list__dot"></span>
+                <span>Mapa interactivo con estados en tiempo real y filtros por sector.</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__dot"></span>
+                <span>Gestión de socios, grupos familiares, historial y autorizaciones.</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__dot"></span>
+                <span>Módulo de cobranzas con planes diferenciados y reporte de mora.</span>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__dot"></span>
+                <span>Roles y permisos configurables para el equipo administrativo.</span>
+              </li>
+            </ul>
 
-              <div class="project-tags">
-                <span class="tag">Web App</span>
-                <span class="tag">Full Stack</span>
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">PostgreSQL</span>
-              </div>
+            <div class="tags">
+              <span class="tag">Web App</span>
+              <span class="tag">Full Stack</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">PostgreSQL</span>
             </div>
 
-            <div class="project-featured__bottom">
-              <span class="project-featured__year">Temporada 2026 / 2027</span>
-              <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:.7rem 1.4rem">
-                ¿Algo similar?
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <footer class="project-featured__footer">
+              <span class="project-featured__meta">Temporada 2026 / 2027 · En producción</span>
+              <a href="#contact" class="btn btn--primary">
+                ¿Te gustaría algo similar?
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="M7 17L17 7M7 7h10v10" />
                 </svg>
               </a>
-            </div>
+            </footer>
           </div>
         </article>
 
-        <!-- Coming soon grid -->
-        <div class="projects-soon">
-          <div class="project-soon-card reveal">
-            <span class="project-soon-card__num">— 02</span>
-            <div class="project-tags">
-              <span class="tag">E-commerce</span>
+        <div class="projects-grid">
+          <article class="project-card" data-reveal>
+            <span class="project-card__kicker">02 · E-commerce</span>
+            <h3 class="project-card__title">Tienda online moderna</h3>
+            <p class="project-card__desc">
+              Catálogo dinámico, carrito inteligente, búsqueda avanzada y pasarela de pagos lista para vender desde
+              día uno.
+            </p>
+            <div class="tags">
               <span class="tag">Next.js</span>
+              <span class="tag">Stripe</span>
+              <span class="tag">Optimización UX</span>
             </div>
-            <h3>Tienda online</h3>
-            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
-              Plataforma de venta en línea con catálogo dinámico, carrito y pasarela de pagos.
-            </p>
-            <span class="project-soon-card__status">En desarrollo</span>
-            <span class="project-soon-card__bg-num" aria-hidden="true">02</span>
-          </div>
-          <div class="project-soon-card reveal reveal-delay-1">
-            <span class="project-soon-card__num">— 03</span>
-            <div class="project-tags">
-              <span class="tag">Landing</span>
-              <span class="tag">UI/UX</span>
-            </div>
-            <h3>Sitio institucional</h3>
-            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
-              Presencia digital profesional para empresa de servicios con CMS integrado.
-            </p>
-            <span class="project-soon-card__status">En desarrollo</span>
-            <span class="project-soon-card__bg-num" aria-hidden="true">03</span>
-          </div>
-          <div class="project-soon-card reveal reveal-delay-2">
-            <span class="project-soon-card__num">— 04</span>
-            <div class="project-tags">
-              <span class="tag">Dashboard</span>
-              <span class="tag">Analytics</span>
-            </div>
-            <h3>Panel de gestión</h3>
-            <p class="text-muted" style="font-size:.85rem;line-height:1.6">
-              Sistema interno de métricas y reportes para pequeña empresa. En fase de diseño.
-            </p>
-            <span class="project-soon-card__status">Próximamente</span>
-            <span class="project-soon-card__bg-num" aria-hidden="true">04</span>
-          </div>
-        </div>
+            <span class="project-card__status">
+              <span class="project-card__dot"></span>
+              En desarrollo
+            </span>
+            <span class="project-card__bg" aria-hidden="true">02</span>
+          </article>
 
+          <article class="project-card" data-reveal>
+            <span class="project-card__kicker">03 · Institucional</span>
+            <h3 class="project-card__title">Sitio institucional premium</h3>
+            <p class="project-card__desc">
+              Presencia digital profesional con foco en conversión, SEO técnico, formularios inteligentes y gestión
+              de contenido.
+            </p>
+            <div class="tags">
+              <span class="tag">Astro</span>
+              <span class="tag">CMS</span>
+              <span class="tag">SEO</span>
+            </div>
+            <span class="project-card__status">
+              <span class="project-card__dot"></span>
+              En desarrollo
+            </span>
+            <span class="project-card__bg" aria-hidden="true">03</span>
+          </article>
+
+          <article class="project-card" data-reveal>
+            <span class="project-card__kicker">04 · Dashboard</span>
+            <h3 class="project-card__title">Panel de gestión & analytics</h3>
+            <p class="project-card__desc">
+              Tableros interactivos con métricas clave, exportación de reportes, alertas y roles para toma de
+              decisiones ágil.
+            </p>
+            <div class="tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Data Viz</span>
+              <span class="tag">Auth</span>
+            </div>
+            <span class="project-card__status">
+              <span class="project-card__dot"></span>
+              Próximamente
+            </span>
+            <span class="project-card__bg" aria-hidden="true">04</span>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- ════════════════════════════════════════════════
          STACK
     ════════════════════════════════════════════════ -->
-    <section id="stack" aria-labelledby="stack-heading">
+    <section id="stack" class="section stack" aria-labelledby="stack-heading">
       <div class="container">
-        <div class="stack__intro">
-          <div class="reveal">
+        <div class="stack__header" data-reveal>
+          <div class="stack__intro">
             <span class="label">Stack tecnológico</span>
             <h2 id="stack-heading">
-              Nuestras<br />
-              <span class="text-signal">herramientas.</span>
+              Herramientas para
+              <span class="text-gradient">productos sólidos.</span>
             </h2>
           </div>
-          <p class="lead reveal reveal-delay-1">
-            Tecnologías modernas y probadas en producción para construir
-            productos sólidos, performantes y escalables.
+          <p class="stack__lead lead">
+            Elegimos tecnologías modernas, probadas en producción y con gran ecosistema para garantizar código
+            mantenible, performance óptimo y escalabilidad a futuro.
           </p>
         </div>
 
         <div class="stack__grid">
-
-          <!-- Frontend -->
-          <div class="stack-cat reveal">
-            <div class="stack-cat__header">
-              <div class="stack-cat__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+          <article class="stack-card" data-reveal>
+            <header class="stack-card__header">
+              <div class="stack-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <polyline points="16 18 22 12 16 6" />
                   <polyline points="8 6 2 12 8 18" />
                 </svg>
               </div>
-              <span class="stack-cat__name">Frontend</span>
-            </div>
-            <div class="stack-items">
+              <span class="stack-card__title">Frontend</span>
+            </header>
+            <div class="stack-list">
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">React / Next.js</span>
-                  <span class="stack-item__pct">95%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">React · Next.js</span>
+                  <span class="stack-item__value">95%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="95"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="95"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">TypeScript</span>
-                  <span class="stack-item__pct">85%</span>
+                  <span class="stack-item__value">90%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="85"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="90"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">Tailwind CSS</span>
-                  <span class="stack-item__pct">92%</span>
+                  <span class="stack-item__value">92%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="92"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="92"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">HTML / CSS / JS</span>
-                  <span class="stack-item__pct">100%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">HTML · CSS · JS</span>
+                  <span class="stack-item__value">98%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="100"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="98"></div>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Backend -->
-          <div class="stack-cat reveal reveal-delay-1">
-            <div class="stack-cat__header">
-              <div class="stack-cat__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+          <article class="stack-card" data-reveal>
+            <header class="stack-card__header">
+              <div class="stack-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <rect x="2" y="3" width="20" height="14" rx="2" />
                   <line x1="8" y1="21" x2="16" y2="21" />
                   <line x1="12" y1="17" x2="12" y2="21" />
                 </svg>
               </div>
-              <span class="stack-cat__name">Backend</span>
-            </div>
-            <div class="stack-items">
+              <span class="stack-card__title">Backend</span>
+            </header>
+            <div class="stack-list">
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">Node.js</span>
-                  <span class="stack-item__pct">90%</span>
+                  <span class="stack-item__value">92%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="90"></div>
-                </div>
-              </div>
-              <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">Express / Fastify</span>
-                  <span class="stack-item__pct">87%</span>
-                </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="87"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="92"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">Python / Django</span>
-                  <span class="stack-item__pct">75%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">Express · Fastify</span>
+                  <span class="stack-item__value">88%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="75"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="88"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">REST APIs</span>
-                  <span class="stack-item__pct">93%</span>
+                  <span class="stack-item__value">94%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="93"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="94"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">Python</span>
+                  <span class="stack-item__value">78%</span>
+                </div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="78"></div>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Database -->
-          <div class="stack-cat reveal reveal-delay-2">
-            <div class="stack-cat__header">
-              <div class="stack-cat__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+          <article class="stack-card" data-reveal>
+            <header class="stack-card__header">
+              <div class="stack-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <ellipse cx="12" cy="5" rx="9" ry="3" />
                   <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
                   <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                 </svg>
               </div>
-              <span class="stack-cat__name">Base de datos</span>
-            </div>
-            <div class="stack-items">
+              <span class="stack-card__title">Base de datos</span>
+            </header>
+            <div class="stack-list">
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">PostgreSQL</span>
-                  <span class="stack-item__pct">88%</span>
+                  <span class="stack-item__value">90%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="88"></div>
-                </div>
-              </div>
-              <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">MongoDB</span>
-                  <span class="stack-item__pct">80%</span>
-                </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="80"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="90"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">Supabase</span>
-                  <span class="stack-item__pct">82%</span>
+                  <span class="stack-item__value">86%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="82"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="86"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">Firebase</span>
-                  <span class="stack-item__pct">75%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">MongoDB</span>
+                  <span class="stack-item__value">82%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="75"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="82"></div>
+                </div>
+              </div>
+              <div class="stack-item">
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">Firebase</span>
+                  <span class="stack-item__value">76%</span>
+                </div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="76"></div>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- DevOps -->
-          <div class="stack-cat reveal reveal-delay-3">
-            <div class="stack-cat__header">
-              <div class="stack-cat__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+          <article class="stack-card" data-reveal>
+            <header class="stack-card__header">
+              <div class="stack-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
                     d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
                 </svg>
               </div>
-              <span class="stack-cat__name">DevOps & Deploy</span>
-            </div>
-            <div class="stack-items">
+              <span class="stack-card__title">DevOps · Deploy</span>
+            </header>
+            <div class="stack-list">
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">Git / GitHub</span>
-                  <span class="stack-item__pct">97%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">Git · GitHub</span>
+                  <span class="stack-item__value">97%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="97"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="97"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">Vercel / Netlify</span>
-                  <span class="stack-item__pct">92%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">Vercel · Netlify</span>
+                  <span class="stack-item__value">94%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="92"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="94"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
+                <div class="stack-item__meta">
                   <span class="stack-item__name">Docker</span>
-                  <span class="stack-item__pct">78%</span>
+                  <span class="stack-item__value">80%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="78"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="80"></div>
                 </div>
               </div>
               <div class="stack-item">
-                <div class="stack-item__top">
-                  <span class="stack-item__name">AWS / GCP</span>
-                  <span class="stack-item__pct">70%</span>
+                <div class="stack-item__meta">
+                  <span class="stack-item__name">AWS · GCP</span>
+                  <span class="stack-item__value">74%</span>
                 </div>
-                <div class="stack-bar-wrap">
-                  <div class="stack-bar" data-width="70"></div>
+                <div class="stack-bar">
+                  <div class="stack-bar__fill" data-width="74"></div>
                 </div>
               </div>
             </div>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
@@ -602,96 +641,95 @@
     <!-- ════════════════════════════════════════════════
          CONTACT
     ════════════════════════════════════════════════ -->
-    <section id="contact" aria-labelledby="contact-heading">
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
       <div class="container">
         <div class="contact__grid">
-
-          <!-- Info -->
-          <div class="contact__info reveal">
+          <div class="contact__info" data-reveal>
             <span class="label">Contacto</span>
             <h2 id="contact-heading">
-              Hablemos de tu<br />
-              <span class="text-signal">próximo proyecto.</span>
+              Hablemos de tu
+              <span class="text-gradient">próximo proyecto.</span>
             </h2>
-            <p>
-              ¿Tenés una idea en mente? ¿Necesitás renovar tu presencia digital?
-              Contanos de qué se trata y lo charlamos sin compromiso.
-              Te respondemos en menos de 24 hs.
+            <p class="contact__text lead">
+              ¿Tenés una idea en mente, necesitás renovar tu web o querés digitalizar un proceso? Contanos qué
+              buscás y te respondemos en menos de 24 horas, sin compromiso.
             </p>
 
-            <div class="contact-details">
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
-                <span>hola@studio74.com.ar</span>
+                <span class="contact-item__text">hola@studio74.com.ar</span>
               </div>
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
+              <div class="contact-item">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                   </svg>
                 </div>
-                <span>@studio74.ar</span>
+                <span class="contact-item__text">@studio74.ar</span>
               </div>
-              <div class="contact-detail-item">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
+              <div class="contact-item">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                 </div>
-                <span>Argentina</span>
+                <span class="contact-item__text">Buenos Aires · Argentina</span>
               </div>
             </div>
           </div>
 
-          <!-- Form -->
-          <div class="reveal reveal-delay-1">
-            <form class="contact-form" id="contactForm" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="given-name" />
+          <div class="contact__form-wrap" data-reveal>
+            <form class="form" id="contactForm" novalidate>
+              <div class="form__row">
+                <div class="form__field">
+                  <label for="name" class="form__label">Nombre</label>
+                  <input type="text" id="name" name="name" class="form__input" placeholder="Tu nombre"
+                    autocomplete="given-name" required />
                 </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" placeholder="tu@email.com" required
-                    autocomplete="email" />
+                <div class="form__field">
+                  <label for="email" class="form__label">Email</label>
+                  <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com"
+                    autocomplete="email" required />
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="service">¿Qué necesitás?</label>
-                <select id="service" name="service">
-                  <option value="" disabled selected>Seleccioná un servicio</option>
+              <div class="form__field">
+                <label for="service" class="form__label">Tipo de proyecto</label>
+                <select id="service" name="service" class="form__select" required>
+                  <option value="" disabled selected>Seleccioná una opción</option>
                   <option>Landing page</option>
                   <option>Sitio web institucional</option>
                   <option>E-commerce</option>
                   <option>Aplicación web a medida</option>
-                  <option>Sistema de gestión</option>
+                  <option>Sistema de gestión / Dashboard</option>
                   <option>Diseño UI/UX</option>
+                  <option>Consultoría técnica</option>
                   <option>Otro</option>
                 </select>
               </div>
 
-              <div class="form-group">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message"
-                  placeholder="Contanos sobre tu proyecto, idea o lo que necesitás..." required></textarea>
+              <div class="form__field">
+                <label for="message" class="form__label">Mensaje</label>
+                <textarea id="message" name="message" class="form__textarea"
+                  placeholder="Contanos sobre tu proyecto, objetivos, timeline o presupuesto estimado..."
+                  required></textarea>
               </div>
 
-              <div class="form-footer">
-                <span class="form-note">Respondemos en menos de 24&nbsp;hs.</span>
-                <button type="submit" class="btn btn-primary">
+              <div class="form__footer">
+                <span class="form__note">Respondemos en menos de 24 hs · Sin compromiso</span>
+                <button type="submit" class="btn btn--primary">
                   Enviar mensaje
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                     <line x1="22" y1="2" x2="11" y2="13" />
                     <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
@@ -699,7 +737,6 @@
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </section>
@@ -714,7 +751,7 @@
       <div class="footer__inner">
         <div class="footer__brand">
           <svg class="footer__brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img"
-            aria-label="Studio 74">
+            aria-label="Studio 74" focusable="false">
             <rect width="100" height="100" fill="#0B0B0C" />
             <g fill="none" stroke="#D2FF3A">
               <path d="M7.7 10.9H64L13 88" stroke-width="6.2" />
@@ -724,26 +761,25 @@
             </g>
             <rect x="85" y="86" width="8" height="8" fill="#D2FF3A" />
           </svg>
-          <span class="footer__brand-name">Studio <strong>74</strong></span>
+          <span class="footer__brand-text">Studio <strong>74</strong></span>
         </div>
 
-        <span class="footer__copy">
-          &copy; 2024 Studio 74 — Todos los derechos reservados.
-        </span>
+        <span class="footer__copy">© 2024 – <span id="year"></span> Studio 74. Todos los derechos reservados.</span>
 
         <nav class="footer__links" aria-label="Navegación secundaria">
-          <a href="#about">Nosotros</a>
-          <a href="#projects">Proyectos</a>
-          <a href="#stack">Stack</a>
-          <a href="#contact">Contacto</a>
+          <a href="#about" class="footer__link">Nosotros</a>
+          <a href="#projects" class="footer__link">Proyectos</a>
+          <a href="#stack" class="footer__link">Stack</a>
+          <a href="#contact" class="footer__link">Contacto</a>
         </nav>
       </div>
     </div>
   </footer>
 
-  <!-- Script -->
   <script src="js/main.js" defer></script>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
