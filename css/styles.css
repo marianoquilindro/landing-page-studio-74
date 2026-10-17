@@ -888,10 +888,6 @@ h3 {
   min-width: 0;
 }
 
-.carousel__slide picture {
-  display: block;
-}
-
 .carousel__slide img {
   display: block;
   width: 100%;
