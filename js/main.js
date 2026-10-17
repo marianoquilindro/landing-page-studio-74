@@ -229,9 +229,9 @@
   /* ── Contact form ───────────────────────────────── */
   /* Tres modos, en este orden:
      1. contact.php — hosting con PHP (Hostinger). No usa terceros.
-     2. formsubmit.co — relay para hosting estático (GitHub Pages), donde
-        el PHP no corre. Requiere activar el formulario UNA vez: el primer
-        envío dispara un mail de confirmación al buzón.
+     2. Web3Forms — relay para hosting estático (GitHub Pages), donde el PHP
+        no corre. Usa una sola "access key" fija: a diferencia de FormSubmit,
+        no hay activación por formulario ni mails de confirmación.
      3. mailto: — último recurso: abrimos el cliente de correo del
         visitante con el mensaje precargado.
      Nunca mostramos "mensaje enviado" si no se envió nada. */
@@ -243,7 +243,11 @@
     const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
     const originalNote = note ? note.textContent : '';
     const CONTACT_EMAIL = 'studio74dev@gmail.com';
-    const RELAY_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
+    /* Relay de Web3Forms para el hosting estático.
+       La access key se pide gratis en https://web3forms.com con el mail del
+       estudio: llega un mail con la clave y se pega acá. Es fija y no vence. */
+    const WEB3FORMS_KEY = 'dcea2867-da4a-4854-b353-7538e8f4c5da';
+    const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
     const CHECK_SVG = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <polyline points="20 6 9 17 4 12" />
@@ -329,27 +333,32 @@
       }
     };
 
-    /* 2) formsubmit.co — relay para hosting estático, donde el PHP no corre */
+    /* 2) Web3Forms — relay para hosting estático, donde el PHP no corre.
+        Sin key todavía: devuelve false y seguimos con el mailto. */
     const sendViaRelay = async (data) => {
+      if (!WEB3FORMS_KEY) return false;
       try {
-        const res = await fetch(RELAY_ENDPOINT, {
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 15000);
+        const res = await fetch(WEB3FORMS_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          signal: ctrl.signal,
           body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: `Consulta desde la web — ${data.get('service') || 'Proyecto'}`,
+            from_name: 'Studio 74 · Web',
             name: data.get('name') || '',
             email: data.get('email') || '',
-            _replyto: data.get('email') || '',
+            replyto: data.get('email') || '',
             'Tipo de proyecto': data.get('service') || '',
             message: data.get('message') || '',
-            _subject: `Consulta desde la web — ${data.get('service') || 'Proyecto'}`,
-            _template: 'table',
           }),
         });
-        if (!res.ok) return false;
+        clearTimeout(timeout);
         const info = await res.json().catch(() => null);
-        // El relay contesta { "success": "true" | "false" }.
-        // Solo damos por enviado si lo confirma.
-        return !!info && String(info.success).toLowerCase() === 'true';
+        // Web3Forms contesta { "success": true } solo si aceptó el envío.
+        return res.ok && !!info && info.success === true;
       } catch (_) {
         return false;
       }
@@ -389,7 +398,7 @@
         return;
       }
 
-      // 2) Hosting estático (GitHub Pages): relay por FormSubmit.
+      // 2) Hosting estático (GitHub Pages): relay por Web3Forms.
       if (await sendViaRelay(data)) return sent();
 
       // 3) Último recurso: abrimos el correo del visitante.

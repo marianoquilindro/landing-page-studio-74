@@ -11,7 +11,7 @@
  *      (el remitente tiene que ser de tu dominio, ver FROM_EMAIL)
  *   3. Listo: el formulario de la landing pasa a modo PHP solo, sin
  *      tocar el JavaScript (si contact.php no existe —por ejemplo en
- *      GitHub Pages— el front cae en el relay de FormSubmit y, si ese
+ *      GitHub Pages— el front cae en el relay de Web3Forms y, si ese
  *      tampoco responde, en el fallback mailto:).
  *
  * Los mensajes llegan a TO_EMAIL (el Gmail del estudio).
