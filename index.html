@@ -167,7 +167,7 @@
           </article>
           <article class="stat-card" data-reveal>
             <span class="stat-card__num" data-counter="4">0</span>
-            <span class="stat-card__label">Socios, sin intermediarios</span>
+            <span class="stat-card__label">Desarrolladores en el equipo</span>
           </article>
           <article class="stat-card" data-reveal>
             <span class="stat-card__num"><span data-counter="24">0</span> h</span>
@@ -185,7 +185,7 @@
         <div class="section__header" data-reveal>
           <span class="label">Sobre nosotros</span>
           <h2 id="about-heading">
-            Cuatro desarrolladores,
+            Un equipo chico,
             <br />
             cero intermediarios.
           </h2>
@@ -199,8 +199,7 @@
             </p>
             <div class="about__text">
               <p>Trabajamos en desarrollo web full-stack: desde sitios institucionales hasta sistemas internos con
-                usuarios, permisos, cobros y reportes. Cada proyecto lo encaramos con entregas por etapas y
-                comunicación directa: hablás siempre con la persona que programa.</p>
+                usuarios, permisos, cobros y reportes.</p>
               <p>Contanos qué necesitás: una web nueva, una landing para una campaña o un sistema a medida. Te
                 decimos con honestidad qué te conviene — incluso si es más simple de lo que pensabas.</p>
             </div>
@@ -209,28 +208,24 @@
               <span class="team__label">El equipo</span>
               <ul class="team__list">
                 <li class="team__member">
-                  <span class="team__avatar" aria-hidden="true">M</span>
                   <span class="team__info">
                     <span class="team__name">Mariano</span>
                     <span class="team__role">Desarrollo full-stack</span>
                   </span>
                 </li>
                 <li class="team__member">
-                  <span class="team__avatar" aria-hidden="true">R</span>
                   <span class="team__info">
                     <span class="team__name">Ramiro</span>
                     <span class="team__role">Backend &amp; arquitectura</span>
                   </span>
                 </li>
                 <li class="team__member">
-                  <span class="team__avatar" aria-hidden="true">G</span>
                   <span class="team__info">
                     <span class="team__name">Gerónimo</span>
                     <span class="team__role">Frontend &amp; UI</span>
                   </span>
                 </li>
                 <li class="team__member">
-                  <span class="team__avatar" aria-hidden="true">V</span>
                   <span class="team__info">
                     <span class="team__name">Valentín</span>
                     <span class="team__role">Producto &amp; UX</span>
@@ -244,13 +239,12 @@
             <article class="value-card" data-spotlight>
               <div class="value-card__icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.6-4.8a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
                 </svg>
               </div>
-              <h3>Hablás con quien programa</h3>
-              <p>No hay cuentas ni intermediarios: las cuatro personas que hacemos el sistema somos las que te
-                responden.</p>
+              <h3>Te hablamos claro</h3>
+              <p>Sin jerga innecesaria: te explicamos cada decisión en palabras simples, para que entiendas siempre qué
+                se está haciendo y por qué.</p>
             </article>
             <article class="value-card" data-spotlight>
               <div class="value-card__icon">
@@ -315,16 +309,26 @@
               <div class="carousel__track">
                 <div class="carousel__slides">
                   <div class="carousel__slide">
-                    <img src="assets/img/progreso-dashboard.png"
-                      alt="Panel principal de Club El Progreso con métricas y resumen de ocupación" loading="eager" />
+                    <picture>
+                      <source srcset="assets/img/progreso-dashboard.webp" type="image/webp" />
+                      <img src="assets/img/progreso-dashboard.png" width="1024" height="470"
+                        alt="Panel principal de Club El Progreso con métricas y resumen de ocupación" loading="eager"
+                        decoding="async" />
+                    </picture>
                   </div>
                   <div class="carousel__slide">
-                    <img src="assets/img/progreso-mapa.png" alt="Mapa interactivo de sombrillas y pileta del club"
-                      loading="lazy" />
+                    <picture>
+                      <source srcset="assets/img/progreso-mapa.webp" type="image/webp" />
+                      <img src="assets/img/progreso-mapa.png" width="1024" height="470"
+                        alt="Mapa interactivo de sombrillas y pileta del club" loading="lazy" decoding="async" />
+                    </picture>
                   </div>
                   <div class="carousel__slide">
-                    <img src="assets/img/progreso-recaudacion.png" alt="Módulo de recaudación y estado de cobranzas"
-                      loading="lazy" />
+                    <picture>
+                      <source srcset="assets/img/progreso-recaudacion.webp" type="image/webp" />
+                      <img src="assets/img/progreso-recaudacion.png" width="1024" height="471"
+                        alt="Módulo de recaudación y estado de cobranzas" loading="lazy" decoding="async" />
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -623,6 +627,14 @@
                   </svg>
                 </button>
               </div>
+
+              <p class="form__privacy">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                <span>Usamos tus datos solo para responderte.</span>
+              </p>
             </form>
           </div>
         </div>
