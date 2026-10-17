@@ -28,6 +28,35 @@
   <meta name="twitter:image" content="https://studio74dev.github.io/assets/og.png" />
   <title>Studio 74 — Desarrollo web a medida</title>
 
+  <!-- Datos estructurados: le dicen a los buscadores qué es Studio 74 -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://studio74dev.github.io/#estudio",
+      "name": "Studio 74",
+      "description": "Estudio de desarrollo web en Argentina. Landing pages, sitios institucionales y sistemas de gestión a medida. Cuatro desarrolladores, sin intermediarios.",
+      "url": "https://studio74dev.github.io/",
+      "email": "studio74dev@gmail.com",
+      "logo": "https://studio74dev.github.io/assets/firma/studio74-logo-firma.png",
+      "image": "https://studio74dev.github.io/assets/og.png",
+      "areaServed": { "@type": "Country", "name": "Argentina" },
+      "knowsLanguage": "es-AR",
+      "sameAs": ["https://www.instagram.com/studio74dev/"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing pages" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sitios institucionales" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas de gestión a medida" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aplicaciones web" } }
+        ]
+      }
+    }
+  </script>
+
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />

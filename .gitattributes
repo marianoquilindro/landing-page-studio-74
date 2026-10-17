@@ -1,0 +1,11 @@
+# Normaliza los finales de línea y protege los binarios de que git los "arregle".
+
+* text=auto
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
